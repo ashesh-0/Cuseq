@@ -9,12 +9,12 @@
 #include <vector>
 #endif
 
-#include "GridFromEdges.h"
+#include "GridPlanFromEdges.h"
 #include <cmath>
 #include <iostream>
 using namespace std;
 
-GridFromEdges::GridFromEdges( std::tuple<float, float> overlap, OrderMode mode, float top, float left, float bottom, float right):
+GridPlanFromEdges::GridPlanFromEdges( std::tuple<float, float> overlap, OrderMode mode, float top, float left, float bottom, float right):
     BaseGridPlan(overlap, mode),
     top_(top),
     left_(left),
@@ -24,24 +24,24 @@ GridFromEdges::GridFromEdges( std::tuple<float, float> overlap, OrderMode mode, 
     ;
 }
 
-int GridFromEdges::numRows(float dy)
+int GridPlanFromEdges::numRows(float dy)
 {
     float total_height = abs(top_ - bottom_) + dy;
     return ceil(total_height / dy);
 }
 
-int GridFromEdges::numCols(float dx)
+int GridPlanFromEdges::numCols(float dx)
 {
     float total_width = abs(left_ - right_) + dx;
     return ceil(total_width / dx);
 }
 
-float GridFromEdges::offsetX(float dx)
+float GridPlanFromEdges::offsetX(float dx)
 {
     return fmin(left_, right_);
 }
 
-float GridFromEdges::offsetY(float dy)
+float GridPlanFromEdges::offsetY(float dy)
 {
     return fmin(top_, bottom_);
 }
@@ -54,7 +54,7 @@ int main()
     float left = 0.0;
     float bottom = 10.0;
     float right = 20.0;
-    auto obj = GridFromEdges( overlap, mode, top, left, bottom, right);
+    auto obj = GridPlanFromEdges( overlap, mode, top, left, bottom, right);
     obj.initialize(10.0, 10.0);
     auto next = obj.nextGridPosition();
     cout << "x: " << next.x << " y:" << next.y << " row:" << next.row <<" col:"<< next.col <<  endl;

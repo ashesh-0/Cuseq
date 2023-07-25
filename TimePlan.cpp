@@ -17,7 +17,7 @@ TimePlan::TimePlan():
 }
 
 
-void TimePlan::setIntervalDuration(float interval, float duration)
+void TimePlan::setNewPhaseIntervalDuration(float interval, float duration)
 {
     interval_ = interval;
     duration_ = duration;
@@ -25,7 +25,7 @@ void TimePlan::setIntervalDuration(float interval, float duration)
     init_done_ = true;
 }
 
-void TimePlan::setIntervalLoops(float interval, unsigned int loops)
+void TimePlan::setNewPhaseIntervalLoops(float interval, unsigned int loops)
 {
     interval_ = interval;
     loops_ = loops;
@@ -34,7 +34,7 @@ void TimePlan::setIntervalLoops(float interval, unsigned int loops)
     init_done_ = true;
 }
 
-void TimePlan::setDurationLoops(float duration, unsigned int loops)
+void TimePlan::setNewPhaseDurationLoops(float duration, unsigned int loops)
 {
     duration_ = duration;
     loops_ = loops;
@@ -112,25 +112,25 @@ MultiPhaseTimePlan::~MultiPhaseTimePlan()
     timeplans_.clear();
 }
 
-void MultiPhaseTimePlan::setIntervalDuration(float interval, float duration)
+void MultiPhaseTimePlan::setNewPhaseIntervalDuration(float interval, float duration)
 {
     auto timeplan = new TimePlan();
-    timeplan->setIntervalDuration(interval, duration);
+    timeplan->setNewPhaseIntervalDuration(interval, duration);
     timeplans_.push_back(timeplan);
     init_done_ = true;
 }
 
-void MultiPhaseTimePlan::setIntervalLoops(float interval, unsigned int loops)
+void MultiPhaseTimePlan::setNewPhaseIntervalLoops(float interval, unsigned int loops)
 {
     auto timeplan = new TimePlan();
-    timeplan->setIntervalLoops(interval, loops);
+    timeplan->setNewPhaseIntervalLoops(interval, loops);
     timeplans_.push_back(timeplan);
     init_done_ = true;
 }
-void MultiPhaseTimePlan::setDurationLoops(float duration, unsigned int loops)
+void MultiPhaseTimePlan::setNewPhaseDurationLoops(float duration, unsigned int loops)
 {
     auto timeplan = new TimePlan();
-    timeplan->setDurationLoops(duration, loops);
+    timeplan->setNewPhaseDurationLoops(duration, loops);
     timeplans_.push_back(timeplan);
     init_done_ = true;
 }
@@ -171,9 +171,9 @@ float MultiPhaseTimePlan::getNextEventTimeSeconds(){
 
 int main(){
     auto timeplan = MultiPhaseTimePlan();
-    timeplan.setIntervalDuration(4, 10);
-    timeplan.setIntervalLoops(2, 3);
-    // timeplan.setDurationLoops(3, 3);
+    timeplan.setNewPhaseIntervalDuration(4, 10);
+    timeplan.setNewPhaseIntervalLoops(2, 3);
+    // timeplan.setNewPhaseDurationLoops(3, 3);
     cout << timeplan.getNextEventTime()  << endl;
     cout << timeplan.getNextEventTime() << endl;
     cout << timeplan.getNextEventTime() << endl;

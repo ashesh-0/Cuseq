@@ -1,5 +1,5 @@
-#ifndef _GridFromEdges_H_
-#define _GridFromEdges_H_
+#ifndef _GridPlanFromEdges_H_
+#define _GridPlanFromEdges_H_
 
 #ifdef _MSC_VER
 // We use exception specifications to instruct SWIG to generate the correct
@@ -11,10 +11,10 @@
 #include "BaseGridPlan.h"
 class BaseGridPlan;
 
-class GridFromEdges : public BaseGridPlan
+class GridPlanFromEdges : public BaseGridPlan
 {
 public:
-    GridFromEdges( std::tuple<float, float> overlap, OrderMode mode, float top, float left, float bottom, float right);
+    GridPlanFromEdges( std::tuple<float, float> overlap, OrderMode mode, float top, float left, float bottom, float right);
     int numRows(float dy);
     int numCols(float dx);
     float offsetX(float dx);
@@ -26,4 +26,4 @@ private:
     float right_;
 };
 
-#endif // _GridFromEdges_H_
+#endif // _GridPlanFromEdges_H_

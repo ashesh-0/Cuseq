@@ -24,9 +24,9 @@ public:
     unsigned int getLoops();
     float getDuration();
     float getLastEventTime();
-    void setIntervalDuration(float interval, float duration);
-    void setIntervalLoops(float interval, unsigned int loops);
-    void setDurationLoops(float duration, unsigned int loops);
+    void setNewPhaseIntervalDuration(float interval, float duration);
+    void setNewPhaseIntervalLoops(float interval, unsigned int loops);
+    void setNewPhaseDurationLoops(float duration, unsigned int loops);
     float getNextEventTime();
     float getNextEventTimeSeconds();
 
@@ -46,9 +46,9 @@ public:
     MultiPhaseTimePlan();
     ~MultiPhaseTimePlan();
     float getNextEventTime();
-    void setIntervalDuration(float interval, float duration);
-    void setIntervalLoops(float interval, unsigned int loops);
-    void setDurationLoops(float duration, unsigned int loops);
+    void setNewPhaseIntervalDuration(float interval, float duration);
+    void setNewPhaseIntervalLoops(float interval, unsigned int loops);
+    void setNewPhaseDurationLoops(float duration, unsigned int loops);
     float getNextEventTimeSeconds();
 
 private:

@@ -8,16 +8,29 @@
 #pragma warning(disable : 4290)
 #endif
 
+#include "TimePlan.h"
+#include "MDAPosition.h"
+#include "ZPlan.h"
+#include "GridPlanFromEdges.h"
+#include "string.h"
+#include "Channel.h"
+#include <tuple>
 
 class MDASequence;
 
 class MDASequence
 {
 public:
-    MDASequence(std::map<std::string, float> timePlan, std::vector<int> statePositions, std::map<std::string,int> gridPlan, 
-    std::map<std::string, int> zPlan);
+    MDASequence(std::string axisOrder, std::vector<Position> stagePositions,
+    GridPlanFromEdges& grid, std::vector<Channel> channels, TimePlan& timePlan,
+    ZPlan& zplan);
+    // TODO: replace these classes with their base versions.
+        
 private:
     int uid_;
+    unsigned int length_;
+    std::tuple<float,float> fovSize_;
+
 };
 
 #endif //_MDASequence_H_
